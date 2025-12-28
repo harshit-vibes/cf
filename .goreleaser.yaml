@@ -50,16 +50,16 @@ changelog:
       - '^test:'
       - '^chore:'
 
-# Homebrew tap (optional - see section 3)
-brews:
-  - name: dsaprep
-    repository:
-      owner: harshit-vibes
-      name: homebrew-tap
-    homepage: "https://github.com/harshit-vibes/dsaprep"
-    description: "A Codeforces practice companion with beautiful TUI"
-    license: "MIT"
-    install: |
-      bin.install "dsaprep"
-    test: |
-      system "#{bin}/dsaprep", "version"
+# Homebrew tap (uncomment after creating harshit-vibes/homebrew-tap repo)
+# brews:
+#   - name: dsaprep
+#     repository:
+#       owner: harshit-vibes
+#       name: homebrew-tap
+#     homepage: "https://github.com/harshit-vibes/dsaprep"
+#     description: "A Codeforces practice companion with beautiful TUI"
+#     license: "MIT"
+#     install: |
+#       bin.install "dsaprep"
+#     test: |
+#       system "#{bin}/dsaprep", "version"

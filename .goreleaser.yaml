@@ -1,0 +1,65 @@
+# GoReleaser configuration
+# Run: goreleaser release --clean
+
+version: 2
+
+project_name: dsaprep
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: dsaprep
+    main: ./cmd/dsaprep
+    binary: dsaprep
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/harshitchoudhary/dsaprep/internal/cmd.Version={{.Version}}
+      - -X github.com/harshitchoudhary/dsaprep/internal/cmd.Commit={{.Commit}}
+      - -X github.com/harshitchoudhary/dsaprep/internal/cmd.BuildDate={{.Date}}
+
+archives:
+  - id: default
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE*
+
+checksum:
+  name_template: 'checksums.txt'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+
+# Homebrew tap (optional - see section 3)
+brews:
+  - name: dsaprep
+    repository:
+      owner: harshitchoudhary
+      name: homebrew-tap
+    homepage: "https://github.com/harshitchoudhary/dsaprep"
+    description: "A Codeforces practice companion with beautiful TUI"
+    license: "MIT"
+    install: |
+      bin.install "dsaprep"
+    test: |
+      system "#{bin}/dsaprep", "version"

@@ -1,6 +1,6 @@
 package main
 
-import "github.com/harshit-vibes/dsaprep/internal/cmd"
+import "github.com/harshit-vibes/dsaprep/pkg/cmd"
 
 func main() {
 	cmd.Execute()

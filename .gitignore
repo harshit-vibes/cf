@@ -7,12 +7,13 @@ dist/
 *.so
 *.dylib
 /dsaprep
+/explore
 
 # Test binary
 *.test
 
 # Coverage
-coverage.out
+*.out
 coverage.html
 
 # Go workspace
@@ -35,3 +36,17 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+
+# Test workspace (contains real credentials)
+.test-workspace/
+
+# Environment files with credentials
+.dsaprep.env
+*.env.local
+
+# Local workspace data
+workspace.yaml
+problems/
+stats/
+submissions/
+templates/

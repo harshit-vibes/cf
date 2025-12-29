@@ -21,9 +21,6 @@ type Config struct {
 
 	// Paths
 	WorkspacePath string `mapstructure:"workspace_path"`
-
-	// Internal
-	mu sync.RWMutex
 }
 
 // DifficultyRange represents min/max difficulty

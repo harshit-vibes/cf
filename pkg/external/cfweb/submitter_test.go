@@ -186,7 +186,7 @@ func TestNewSubmitter_Authenticated(t *testing.T) {
 	}
 
 	if submitter == nil {
-		t.Error("NewSubmitter() returned nil")
+		t.Fatal("NewSubmitter() returned nil")
 	}
 
 	if submitter.session != session {

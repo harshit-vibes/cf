@@ -126,7 +126,7 @@ func LoadCredentials() (*Credentials, error) {
 			creds.CFClearance = value
 		case "CF_CLEARANCE_EXPIRES":
 			if value != "" {
-				fmt.Sscanf(value, "%d", &creds.CFClearanceExpires)
+				_, _ = fmt.Sscanf(value, "%d", &creds.CFClearanceExpires)
 			}
 		case "CF_CLEARANCE_UA":
 			creds.CFClearanceUA = value

@@ -354,7 +354,7 @@ func TestParsedProblem_ToSchemaProblem_EmptyTags(t *testing.T) {
 
 	problem := parsed.ToSchemaProblem()
 
-	if problem.Metadata.Tags != nil && len(problem.Metadata.Tags) > 0 {
+	if len(problem.Metadata.Tags) > 0 {
 		t.Errorf("Tags should be empty, got %v", problem.Metadata.Tags)
 	}
 }

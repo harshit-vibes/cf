@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bytes"
-	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -632,26 +631,6 @@ func TestRunStartupChecks_WithWorkspace(t *testing.T) {
 	err := runStartupChecks()
 	_ = err
 }
-
-// Mock check for testing
-type mockCheck struct {
-	name     string
-	status   health.Status
-	message  string
-	critical bool
-}
-
-func (m *mockCheck) Name() string                          { return m.name }
-func (m *mockCheck) Category() string                      { return "test" }
-func (m *mockCheck) Check(ctx context.Context) health.Result {
-	return health.Result{
-		Name:     m.name,
-		Status:   m.status,
-		Message:  m.message,
-		Category: "test",
-	}
-}
-func (m *mockCheck) IsCritical() bool { return m.critical }
 
 func TestDisplayHealthReport_WithDetails(t *testing.T) {
 	report := &health.Report{

@@ -177,8 +177,8 @@ func TestCFConfig_EmptyTags(t *testing.T) {
 		DefaultLanguage: "cpp",
 	}
 
-	if cfg.PreferredTags != nil && len(cfg.PreferredTags) != 0 {
-		t.Errorf("PreferredTags should be nil or empty, got %v", cfg.PreferredTags)
+	if len(cfg.PreferredTags) != 0 {
+		t.Errorf("PreferredTags should be empty, got %v", cfg.PreferredTags)
 	}
 }
 
